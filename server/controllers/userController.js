@@ -3,6 +3,7 @@
 //http://localhost:8000/api/user/webhooks
 
 import { Webhook } from "svix"
+import userModel from "../models/userModel.js"
 
 const clerkWebhooks = async(req,res)=>{
     try {
@@ -11,7 +12,7 @@ const clerkWebhooks = async(req,res)=>{
             
             await whook.verify(JSON.stringify(req.body),{
                 "svix-id":req.headers["svix-id"],
-                "svix-timestamp":req.headers["svix-timestamps"],
+                "svix-timestamp":req.headers["svix-timestamp"],
                 "svix-signature":req.headers["svix-signature"]
             })
 

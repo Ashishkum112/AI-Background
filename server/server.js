@@ -12,14 +12,15 @@ const PORT = process.env.PORT || 4000
 const app = express();
 await connectDB();
 
+//Initialise MiddleWare
+app.use(express.json());
+app.use(cors())
+
 //API Route
 app.get('/',(req,res)=>{res.send("API Working")})
 app.use('/api/user',userRouter)
 
 
-//Initialise MiddleWare
-app.use(express.json());
-app.use(cors())
 
 
 app.listen(PORT,()=>console.log('Server Running on port '+PORT));

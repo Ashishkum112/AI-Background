@@ -21,7 +21,7 @@ const clerkWebhooks = async (req, res) => {
         console.log("Webhook event type:", type); // Debug line
 
         switch (type) {
-            case "user.created":
+            case "user.created":{
                 console.log("Creating new user"); // Debug line
                 const userData = {
                     clerkId: data.id,
@@ -33,24 +33,27 @@ const clerkWebhooks = async (req, res) => {
                 await userModel.create(userData);
                 res.json({});
                 break;
+            }
 
-            case "user.updated":
+            case "user.updated":{
                 console.log("Updating user"); // Debug line
-                const updatedData = {
+                const userData = {
                     email: data.email_addresses[0].email_address,
                     firstName: data.first_name,
                     lastName: data.last_name,
                     photo: data.image_url
                 };
-                await userModel.findOneAndUpdate({ clerkId: data.id }, updatedData);
+                await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
                 res.json({});
                 break;
+            }
 
-            case "user.deleted":
+            case "user.deleted":{
                 console.log("Deleting user"); // Debug line
                 await userModel.findOneAndDelete({ clerkId: data.id });
                 res.json({});
                 break;
+            }
 
             default:
                 res.json({});

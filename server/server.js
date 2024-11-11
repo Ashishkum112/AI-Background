@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/mongodb.js';
 import userRouter from './routes/userRoute.js';
+import imageRouter from './routes/imageRoute.js';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use('/api/user/webhooks', bodyParser.raw({ type: 'application/json' }));
 // API Routes
 app.get('/', (req, res) => res.send("API Working"));
 app.use('/api/user', userRouter); 
+app.use('/api/image',imageRouter)
 
 // Start Server
 app.listen(PORT, () => console.log('Server Running on port ' + PORT));

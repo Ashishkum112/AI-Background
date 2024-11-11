@@ -2,7 +2,6 @@ import { useAuth, useClerk, useUser } from "@clerk/clerk-react";
 import { createContext, useState } from "react";
 import axios from "axios"
 import { toast } from "react-toastify";
-import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext()

@@ -113,6 +113,10 @@ const razorpayInstance = new razorpay({
 
         const {clerkId,planId} = req.body;
 
+        if (!clerkId || !planId) {
+            return res.json({ success: false, message: "Invalid Credentials" });
+          }
+
         const userData = await userModel.findOne({clerkId});
 
         if(!userData || !planId){
@@ -152,7 +156,7 @@ const razorpayInstance = new razorpay({
             plan,
             amount,
             credits,
-            date
+            date:Date.now(),
         }
 
         const newTransaction = await transactionModel.create(transactionData);

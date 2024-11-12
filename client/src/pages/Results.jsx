@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { AppContext } from '../context/AppContext'
+import { useNavigate } from 'react-router-dom'
 
 const Results = () => {
 
     const {resultImage,image} = useContext(AppContext)
+    const navigate = useNavigate();
 
 
   return (
@@ -33,7 +35,7 @@ const Results = () => {
             </div>
             {/* Buttons */}
             {resultImage && <div className='flex justify-center items-center sm:justify-end flex-wrap gap-4 mt-6'>
-                <button className='px-8 py-2.5 text-violet-600 text-sm border border-violet-600 rounded-full hover:scale-105 duration-700'>Try another image</button>
+                <button onClick={()=>{navigate('/')}} className='px-8 py-2.5 text-violet-600 text-sm border border-violet-600 rounded-full hover:scale-105 duration-700'>Try another image</button>
                 <a href={resultImage} download className='px-8 py-2.5 text-white text-sm bg-gradient-to-r from-violet-600 to-fuchsia-500 rounded-full hover:scale-105 duration-500'>Download image</a>
             </div>}
         </div>

@@ -29,7 +29,8 @@ const Navbar = () => {
               <p className='text-xs sm:text-sm font-medium text-gray-600'>Credits : {credit}</p>
             </button>
             <p className='text-gray-600 max-sm:hidden'>Hi, {user.fullName}</p>
-            <UserButton/></div>
+            <UserButton/>
+            </div>
           :<button onClick={()=>openSignIn({})} className='bg-zinc-800 text-white flex items-center gap-4 px-4 py-2 sm:py-3 sm:px-8 text-sm rounded-full'>Get Started
             <img className='w-3 sm:w-4' src={assets.arrow_icon} alt="" />
         </button>

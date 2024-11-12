@@ -14,8 +14,12 @@ import twitter_icon from './twitter_icon.svg'
 import profile_img_1 from './profile_img_1.png'
 import profile_img_2 from './profile_img_2.png'
 import credit_icon from './credit_icon.png'
+import satyam from './satyam.jpeg'
+import ruturaj from './ruturaj.jpeg'
+import linkedin from './linkedin.png'
 
 export const assets = {
+  linkedin,
     logo,
     logo_icon,
     arrow_icon,
@@ -33,21 +37,24 @@ export const assets = {
 }
 
 export const testimonialsData = [
-    {
-        id: 1,
-        text: "I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.",
-        author: "Richard Nelson",
-        image: profile_img_1,
-        jobTitle:'Web Developer'
-    },
-    {
-        id: 2,
-        text: "I've been using bg.removal for nearly 6 months, I had a fantastic experience. The quality is top-notch. I recommend others to try this app.",
-        author: "Donald Jackman",
-        image: profile_img_2,
-        jobTitle:'UI Deginer'
-    },
+  {
+      id: 1,
+      text: "I just tried bg.removal for the first time, and I’m amazed at how easy and fast it is. Perfect for quick edits, and it saved me so much time!",
+      author: "Satyam Mohanty",
+      image: satyam,
+      jobTitle: 'Web Developer',
+      linkedinlink:'https://www.linkedin.com/in/satyam-mohanty-43882918a'
+  },
+  {
+      id: 2,
+      text: "Started using bg.removal yesterday, and it’s already become my go-to tool! The results are impressive, especially for something I just discovered.",
+      author: "Ruturaj Maharana",
+      image: ruturaj,
+      jobTitle: 'UI Designer',
+      linkedinlink:'https://www.linkedin.com/in/ruturaj-maharana-786415223'
+  },
 ];
+
 
 export const plans = [
     {

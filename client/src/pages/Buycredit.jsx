@@ -24,7 +24,7 @@ const Buycredit = () => {
       description : "Credits Payment",
       order_id : order.id,
       receipt : order.receipt,
-      handler : async (response)=>{
+      handler : async (response)=>{ 
         console.log(response)
 
         const token = await getToken()
@@ -53,20 +53,28 @@ const Buycredit = () => {
 
   const paymentRazorPay = async (planId) => {
     try {
-      
-      const token =await getToken()
-      const {data} = await axios.post(backendUrl+'/api/user/pay-razor',{planId},{headers:{token}})
-
-      if(data.success){
-        initPay(data.order)
+      const token = await getToken();
+       // Debugging
+  
+      const response = await axios.post(
+        backendUrl + '/api/user/pay-razor',
+        { planId },
+        { headers: { token } }
+      );
+  
+       // Debugging
+  
+      if (response.data.success) {
+        initPay(response.data.order);
+      } else {
+        toast.error("Failed to create Razorpay order.");
       }
-
     } catch (error) {
-      console.log(error);
-      toast.error(error.message)
-      
+      console.error("Error in paymentRazorPay:", error); // Debugging
+      toast.error(error.message || "An error occurred during payment.");
     }
-  }
+  };
+  
 
   return (
     <div className='min-h-[80vh] text-center pt-14 mb-10'>
@@ -79,7 +87,7 @@ const Buycredit = () => {
             <p className='mt-3 font-semibold'>{item.id}</p>
             <p className='text-sm'>{item.desc}</p>
             <p className='mt-6'>
-              <span className='text-3xl font-medium'>${item.price}</span>/{item.credits}credits
+              <span className='text-3xl font-medium'>₹{item.price}</span>/{item.credits}credits
             </p>
             <button onClick={()=>paymentRazorPay(item.id)} className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52
             

@@ -147,7 +147,7 @@ const razorpayInstance = new razorpay({
                 break;
         }
 
-        data = Date.now();
+        const data = Date.now();
 
         //Creating Transaction
 

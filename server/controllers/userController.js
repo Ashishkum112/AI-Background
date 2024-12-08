@@ -128,18 +128,18 @@ const razorpayInstance = new razorpay({
         switch (planId) {
             case "Basic":
                 plan = 'Basic'
-                credits = 100
-                amount = 10    
+                credits = 150
+                amount = 100    
                 break;
             case "Advanced":
                 plan = 'Advanced'
                 credits = 500
-                amount = 50    
+                amount = 250    
                 break;
             case "Business":
                 plan = 'Business'
-                credits = 2000
-                amount = 250    
+                credits = 750
+                amount = 500    
                 break;
         
             default:
@@ -201,9 +201,7 @@ const verifyRazorpay = async (req,res) =>{
             // Making the payment true 
 
             await transactionModel.findByIdAndUpdate(transactionData._id,{payment:true})
-
             res.json({success:true,message:"Credits Added Successfully"})
-
         }
 
 

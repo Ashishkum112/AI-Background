@@ -11,9 +11,13 @@ const authUser = async (req,res,next)=>{
             return res.json({success:false,message:"Not Authorised Login Again"})
         }
 
-        const token_decode = jwt.decode(token)
-        req.body.clerkId = token_decode.clerkId
-        next()
+        const token_decode = jwt.decode(token);
+if (!token_decode || !token_decode.clerkId) {
+    return res.status(401).json({ success: false, message: "Invalid Token. Authorization failed." });
+}
+req.body.clerkId = token_decode.clerkId;
+next();
+
 
 
     } catch (error) {

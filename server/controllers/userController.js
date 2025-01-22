@@ -12,6 +12,8 @@ dotenv.config()
 const clerkWebhooks = async (req, res) => {
     try {
         console.log("Webhook triggered"); // Debug line
+        console.log("CLERK_WEBHOOK_SECRET:", process.env.CLERK_WEBHOOK_SECRET);
+
 
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
@@ -78,6 +80,9 @@ const clerkWebhooks = async (req, res) => {
 const userCredits = async (req, res) => {
     try {
         const { clerkId } = req.body;
+        if (!clerkId) {
+            return res.status(400).json({ success: false, message: "clerkId is missing." });
+        }
 
         // Find user by clerkId
         const userData = await userModel.findOne({ clerkId });
